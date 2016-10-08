@@ -2,9 +2,7 @@
 
 #include "Application.cpp"
 
-using namespace std;
-
-int main() {
-	Application app;
-	app.start();
+int main(int argc, char** argv) {
+	Application* app = new Application(argc, argv);
+	app->start();
 } 
