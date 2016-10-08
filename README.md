@@ -1,0 +1,2 @@
+# snake
+make + sfml train
