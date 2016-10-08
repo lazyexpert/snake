@@ -1,24 +1,27 @@
 #include <iostream>
-#include "Logger.cpp"
 #include "string.h"
 #include "Utils.cpp"
 
 using namespace std;
 
+/**
+ * Main Application Class.
+ * Basically - the compostion of all modules.
+ */
 class Application {
     bool debug;    
-    Logger* logger;
-
+    
 public:
-    Application(int argc, char** argv) {
+    /* Accepting command line arguments */    
+    Application(int argc, char** argv) {        
         this->debug = Utils::parseArgs("debug", argc, argv);
-        this->logger = new Logger(this->debug);
         
-        this->logger->log("Application instance created.\nDebug mode: ");
-        this->logger->log(this->debug == 1 ? "true.\n" : "false.\n");
+        cout << "Application instance created.\nDebug mode: ";
+        cout << (this->debug == 1 ? "true.\n" : "false.\n");
     }
 
+    /* Obvious - starting app */
     void start() {
-        this->logger->log("Starting application.\n");        
+        cout << "Starting application.\n";
     }
 };
