@@ -14,6 +14,9 @@ function Abort {
     echo -e "Exit code of the make is: $1"    
 }
 
+# Check if build folder exists
+[[ -d 'build' ]] ||  mkdir build
+
 # compile
 make
 
