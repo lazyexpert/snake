@@ -1,5 +1,5 @@
 CC=g++
-SOURCES=src/main.cpp src/Application.cpp
+SOURCES=src/Logger.cpp src/main.cpp src/Application.cpp src/Utils.cpp
 TARGET=build/snake
 
 all:
