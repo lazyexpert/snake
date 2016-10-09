@@ -2,18 +2,26 @@
 #include <SFML/Graphics.hpp>
 
 #include "../headers/View.hpp"
+#include "../headers/Model.hpp"
 
 using namespace std;
 View :: View() {    
-    cout<< "View instance created";
-    cout << sf::VideoMode::getDesktopMode().width;    
+    cout<< "View instance created\n";        
+    this->screenWidth = sf::VideoMode::getDesktopMode().width;
+    this->screenHeight = sf::VideoMode::getDesktopMode().height;
+    
+    this->cellsInWidth = 30;
+    this->cellsInHeight = 25;
+
+    this->cellWidth = this->screenWidth / this->cellsInWidth;
+    this->cellHeight = this->screenHeight / this->cellsInHeight;
+
+    this->model = new Model(this->cellsInWidth, this->cellsInHeight);
 }
 
 void View :: start() {
-    sf::RenderWindow window(sf::VideoMode(5000, 5000), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
+    sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "SFML works!");
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -23,8 +31,7 @@ void View :: start() {
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear();    
         window.display();
     }
 }

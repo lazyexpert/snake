@@ -11,14 +11,14 @@ using namespace std;
 Application :: Application(int argc, char** argv) {   
     bool res = Utils::parseArgs("debug", argc, argv);    
 
-    cout << "Application instance created.";
-    cout<< (res ? "Debug mode: true." : "Debug mode: false.");
+    cout << "Application instance created.\n";
+    cout<< (res ? "Debug mode: true.\n" : "Debug mode: false.\n");
     
     this->view = new View();        
 }
 
 void Application :: start() {
-    cout << "Starting application.";
+    cout << "Starting application.\n";
     this->view->start();
 }
 
