@@ -3,7 +3,8 @@
 
 #include "Model.hpp"
 
-class View {
+class View 
+{
     int screenWidth;
     int screenHeight;
 
@@ -14,7 +15,7 @@ class View {
     int cellsInHeight;
 
     Model* model;
-    
+
 public:
     View();
 

@@ -9,7 +9,8 @@ using namespace std;
  * Main Application Class.
  * Basically - the compostion of all modules.
  */
-class Application {    
+class Application 
+{
     View* view;
     
 public:

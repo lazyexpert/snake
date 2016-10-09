@@ -8,7 +8,8 @@
 using namespace std;
 
 
-Application :: Application(int argc, char** argv) {   
+Application :: Application(int argc, char** argv) 
+{   
     bool res = Utils::parseArgs("debug", argc, argv);    
 
     cout << "Application instance created.\n";
@@ -17,7 +18,8 @@ Application :: Application(int argc, char** argv) {
     this->view = new View();        
 }
 
-void Application :: start() {
+void Application :: start() 
+{
     cout << "Starting application.\n";
     this->view->start();
 }

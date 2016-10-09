@@ -5,7 +5,8 @@
 #include "../headers/Model.hpp"
 
 using namespace std;
-View :: View() {    
+View :: View() 
+{    
     cout<< "View instance created\n";        
     this->screenWidth = sf::VideoMode::getDesktopMode().width;
     this->screenHeight = sf::VideoMode::getDesktopMode().height;
@@ -19,7 +20,8 @@ View :: View() {
     this->model = new Model(this->cellsInWidth, this->cellsInHeight);
 }
 
-void View :: start() {
+void View :: start()
+{
     sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "SFML works!");
     
     while (window.isOpen())
@@ -27,10 +29,26 @@ void View :: start() {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            // check the type of the event...
+            switch (event.type)
+            {
+                // window closed
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+
+                // key pressed
+                case sf::Event::KeyPressed:
+                    
+                    break;
+
+                // we don't process other types of events
+                default:
+                    break;
+            }
         }
 
+        window.setVerticalSyncEnabled(true);
         window.clear();    
         window.display();
     }

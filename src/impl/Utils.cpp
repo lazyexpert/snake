@@ -5,7 +5,8 @@
 
 Utils :: Utils() {}
 
-bool Utils :: compareStrings(const char* str1, char* str2) {
+bool Utils :: compareStrings(const char* str1, char* str2) 
+{
     if(strlen(str1) != strlen(str2)) 
         return false;
 
@@ -16,7 +17,8 @@ bool Utils :: compareStrings(const char* str1, char* str2) {
     return true;        
 }
 
-bool Utils :: parseArgs(std::string target, int argc, char** argv){
+bool Utils :: parseArgs(std::string target, int argc, char** argv)
+{
     for(int t=0; t<argc; t++) 
         if(compareStrings(target.c_str(), argv[t]))
             return true;
