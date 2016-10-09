@@ -36,10 +36,21 @@ void View :: start()
                 case sf::Event::Closed:
                     window.close();
                     break;
+                
+                // catch window resize
+                // TODO: handle it
+                case sf::Event::Resized:
+                     std::cout << "new width: " << event.size.width << std::endl;
+                     std::cout << "new height: " << event.size.height << std::endl;
+                     break;
 
-                // key pressed
-                case sf::Event::KeyPressed:
-                    
+                // key up
+                case sf::Event::KeyReleased:
+                    if (event.key.code == sf::Keyboard::Escape)
+                    {
+                        std::cout << "Pressed Escape\n";                        
+                    }
+                    std::cout << "Keypress" << event.size.height << std::endl;
                     break;
 
                 // we don't process other types of events
