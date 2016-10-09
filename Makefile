@@ -2,7 +2,7 @@
 CC=g++
 
 # Source files
-SOURCES=src/main.cpp src/Application.cpp src/Utils.cpp
+SOURCES=src/main.cpp src/Logger.cpp src/Application.cpp src/Utils.cpp
 
 # Destination file
 TARGET=build/snake
