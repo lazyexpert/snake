@@ -2,7 +2,10 @@
 #include "string.h"
 
 #include "Utils.cpp"
-#include "Logger.cpp"
+#include "headers/Logger.hpp"
+#include "headers/View.hpp"
+#include "headers/Model.hpp"
+#include "headers/Controller.hpp"
 
 using namespace std;
 
@@ -10,24 +13,27 @@ using namespace std;
  * Main Application Class.
  * Basically - the compostion of all modules.
  */
-class Application {
-    bool debug;
-
-    Logger* logger;
+class Application {    
+    View* view; 
+    Model* model;
+    Controller* controller;
 
 public:
     /* Accepting command line arguments */    
-    Application(int argc, char** argv) {        
-        this->debug = Utils::parseArgs("debug", argc, argv);
-        
-        this->logger = new Logger(this->debug);         
+    Application(int argc, char** argv) {   
+        bool res = Utils::parseArgs("debug", argc, argv);
+        Logger::init(res);
 
-        this->logger->write("Application instance created.\n");
-        this->logger->write(this->debug == 1 ? "Debug mode: true.\n" : "Debug mode: false.\n");
+        this->model = new Model();
+        this->view = new View();
+        this->controller = new Controller(this->model, this->view);
+
+        Logger::write("Application instance created.\n");
+        Logger::write(res ? "Debug mode: true.\n" : "Debug mode: false.\n");
     }
 
     /* Obvious - starting app */
     void start() {
-        this->logger->write("Starting application.\n");
+        Logger::write("Starting application.\n");
     }
 };
