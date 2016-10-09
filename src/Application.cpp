@@ -28,12 +28,12 @@ public:
         this->view = new View();
         this->controller = new Controller(this->model, this->view);
 
-        Logger::write("Application instance created.\n");
-        Logger::write(res ? "Debug mode: true.\n" : "Debug mode: false.\n");
+        Logger::write("Application instance created.");
+        Logger::write(res ? "Debug mode: true." : "Debug mode: false.");
     }
 
     /* Obvious - starting app */
     void start() {
-        Logger::write("Starting application.\n");
+        Logger::write("Starting application.");
     }
 };

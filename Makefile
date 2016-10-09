@@ -1,15 +1,21 @@
 # Compiler
 CC=g++
 
-# Source files
-SOURCES=src/main.cpp src/impl/Logger.cpp src/Application.cpp src/Utils.cpp src/impl/Controller.cpp src/headers/Model.hpp src/impl/Model.cpp src/headers/Logger.hpp src/headers/View.hpp src/impl/View.cpp src/headers/Controller.hpp
-
 # Destination file
 TARGET=build/snake
 
 # Compilation flags
 CFLAGS=-o
 
+# Flags for SFML
+LFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+
+# Source files
+SOURCE=src/impl/*.cpp src/main.cpp src/Application.cpp src/Utils.cpp
+
+# Header files
+HEADERS=src/headers/*.hpp
+
 # Combine
-all:
-	$(CC) $(SOURCES) $(CFLAGS) $(TARGET)
+all: 
+	$(CC) $(SOURCE) $(HEADERS) $(CFLAGS) $(TARGET) $(LFLAGS)

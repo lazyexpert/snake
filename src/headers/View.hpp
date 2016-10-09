@@ -1,8 +1,7 @@
 #ifndef View_H
 #define View_H
 
-class View {    
-
+class View {
 public:
     View();
 
