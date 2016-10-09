@@ -11,7 +11,7 @@ CFLAGS=-o
 LFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
 
 # Source files
-SOURCE=src/impl/*.cpp src/main.cpp src/Application.cpp src/Utils.cpp
+SOURCE=src/impl/*.cpp src/main.cpp
 
 # Header files
 HEADERS=src/headers/*.hpp

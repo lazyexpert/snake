@@ -1,12 +1,16 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "../headers/Logger.hpp"
 #include "../headers/View.hpp"
 
+using namespace std;
 View :: View() {    
-    Logger::write("View instance created");
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    cout<< "View instance created";
+    cout << sf::VideoMode::getDesktopMode().width;    
+}
+
+void View :: start() {
+    sf::RenderWindow window(sf::VideoMode(5000, 5000), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -23,8 +27,4 @@ View :: View() {
         window.draw(shape);
         window.display();
     }
-}
-
-void View :: render() {
-
 }

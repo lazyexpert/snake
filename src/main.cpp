@@ -1,4 +1,4 @@
-#include "Application.cpp"
+#include "headers/Application.hpp"
 
 /**
  * Main program entry point

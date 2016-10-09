@@ -5,7 +5,7 @@ class View {
 public:
     View();
 
-    void render();
+    void start();
 };
 
 #endif
