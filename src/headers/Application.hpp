@@ -3,7 +3,6 @@
 
 #include "View.hpp"
 
-using namespace std;
 
 /**
  * Main Application Class.

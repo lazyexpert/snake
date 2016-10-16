@@ -14,7 +14,7 @@ Application :: Application(int argc, char** argv)
 
     cout << "Application instance created.\n";
     cout<< (res ? "Debug mode: true.\n" : "Debug mode: false.\n");
-    
+        
     this->view = new View();        
 }
 

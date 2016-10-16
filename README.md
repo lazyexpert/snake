@@ -1,11 +1,15 @@
 # snake
-make + sfml train
+I create this application to practice in make, sfml graphics library and drown my nostalgic memories.
+
 
 # Dependencies
-[SFML](http://www.sfml-dev.org/) - find your install way. For Ubuntu distros:
+[SFML](http://www.sfml-dev.org/) - find your install way. 
+
+For Ubuntu distros:
 ```
 sudo apt-get install libsfml-dev
 ```
+
 
 # Start application
 Shell script gently compiles application and starts it 

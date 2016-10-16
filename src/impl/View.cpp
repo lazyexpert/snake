@@ -14,7 +14,7 @@ View :: View()
 
     this->calculateDimensions();
 
-    this->model = new Model(this->cellsInWidth, this->cellsInHeight);
+    // this->model = new Model(this->cellsInWidth, this->cellsInHeight);
 }
 
 void View :: calculateDimensions(int width, int height) 
