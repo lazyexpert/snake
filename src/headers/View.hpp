@@ -25,6 +25,8 @@ class View
 
     Model* model;
 
+    void routeEvents(sf::Event*, sf::Window*);
+
 public:
     View();
 

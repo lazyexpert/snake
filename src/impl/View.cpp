@@ -63,51 +63,53 @@ void View :: gentlyExit(sf::Window* window)
     cout<<"The application is closed. Come back asap!\n";
 }
 
+void View :: routeEvents(sf::Event* event, sf::Window* window) 
+{
+    while (window->pollEvent(*event)) {
+        // check the type of the event...
+        switch (event->type)
+        {
+            // window closed
+            case sf::Event::Closed:
+                this->gentlyExit(window);
+                break;
+            
+            // catch window resize                
+            case sf::Event::Resized:
+                    this->calculateDimensions(event->size.width, event->size.height);
+                    break;
+            
+            // Mouse button click
+            case sf::Event::MouseButtonPressed:
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                    this->handleMouseClick(event->mouseButton.x, event->mouseButton.y);
+                }                    
+                break;
+
+            // key up
+            case sf::Event::KeyReleased:
+                if (event->key.code == sf::Keyboard::Escape) 
+                    this->gentlyExit(window);                    
+                else 
+                    this->handleKeypress(event);                                                
+                break;
+
+            // we don't process other types of events
+            default:
+                break;
+        }
+    }
+}
+
 void View :: start()
 {
-    sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "Last, true, snake!");
     
     // Event router
     while (window.isOpen())
     {
-        sf::Event event;
-        
-        // if event exists
-        while (window.pollEvent(event))
-        {
-            // check the type of the event...
-            switch (event.type)
-            {
-                // window closed
-                case sf::Event::Closed:
-                    this->gentlyExit(&window);
-                    break;
-                
-                // catch window resize                
-                case sf::Event::Resized:
-                     this->calculateDimensions(event.size.width, event.size.height);
-                     break;
-                
-                // Mouse button click
-                case sf::Event::MouseButtonPressed:
-                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-                        this->handleMouseClick(event.mouseButton.x, event.mouseButton.y);
-                    }                    
-                    break;
-
-                // key up
-                case sf::Event::KeyReleased:
-                    if (event.key.code == sf::Keyboard::Escape) 
-                        this->gentlyExit(&window);                    
-                    else 
-                        this->handleKeypress(&event);                                                
-                    break;
-
-                // we don't process other types of events
-                default:
-                    break;
-            }
-        }
+        sf::Event event;        
+        this->routeEvents(&event, &window);
 
         window.setVerticalSyncEnabled(true);
         window.clear();    
