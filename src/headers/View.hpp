@@ -14,6 +14,8 @@ class View
     int cellsInWidth;
     int cellsInHeight;
 
+    void calculateDimensions();
+    
     Model* model;
 
 public:

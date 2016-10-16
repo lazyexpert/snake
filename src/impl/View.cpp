@@ -8,6 +8,13 @@ using namespace std;
 View :: View() 
 {    
     cout<< "View instance created\n";        
+    
+    this->calculateDimensions();
+
+    this->model = new Model(this->cellsInWidth, this->cellsInHeight);
+}
+
+void View :: calculateDimensions() {
     this->screenWidth = sf::VideoMode::getDesktopMode().width;
     this->screenHeight = sf::VideoMode::getDesktopMode().height;
     
@@ -17,7 +24,11 @@ View :: View()
     this->cellWidth = this->screenWidth / this->cellsInWidth;
     this->cellHeight = this->screenHeight / this->cellsInHeight;
 
-    this->model = new Model(this->cellsInWidth, this->cellsInHeight);
+    cout<<"\nSet new dimensions!\n";
+    cout<<"Window width: "<< this->screenWidth<<endl;
+    cout<<"Window height: "<< this->screenHeight<<endl;
+    cout<<"Cell width: "<< this->cellWidth<<endl;
+    cout<<"Cell height: "<< this->cellHeight<<endl;
 }
 
 void View :: start()
@@ -40,8 +51,7 @@ void View :: start()
                 // catch window resize
                 // TODO: handle it
                 case sf::Event::Resized:
-                     std::cout << "new width: " << event.size.width << std::endl;
-                     std::cout << "new height: " << event.size.height << std::endl;
+                     this->calculateDimensions();
                      break;
 
                 // key up
@@ -50,7 +60,7 @@ void View :: start()
                     {
                         std::cout << "Pressed Escape\n";                        
                     }
-                    std::cout << "Keypress" << event.size.height << std::endl;
+                    std::cout << "Keypress\n";
                     break;
 
                 // we don't process other types of events
