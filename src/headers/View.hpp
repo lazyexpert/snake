@@ -16,6 +16,8 @@ class View
 
     void calculateDimensions();
     
+    void handleMouseClick(int ,int);
+
     Model* model;
 
 public:

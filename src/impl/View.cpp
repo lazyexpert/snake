@@ -31,6 +31,21 @@ void View :: calculateDimensions() {
     cout<<"Cell height: "<< this->cellHeight<<endl;
 }
 
+void View :: handleMouseClick(int x, int y) {
+    // Make sure we deal left button
+    
+    // if (event.Button == sf::Mouse::Button.Left) 
+    // {
+        cout<<"Catch left mouse button"<<endl;
+        cout<<"x: "<<x<<endl;
+        cout<<"y: "<<y<<endl<<endl;
+    // } 
+    // else 
+    // {
+    //     cout<<"Catch mouse click. Not left button :)"<<endl;
+    // }
+}
+
 void View :: start()
 {
     sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "SFML works!");
@@ -48,11 +63,17 @@ void View :: start()
                     window.close();
                     break;
                 
-                // catch window resize
-                // TODO: handle it
+                // catch window resize                
                 case sf::Event::Resized:
                      this->calculateDimensions();
                      break;
+                
+                // Mouse button click
+                case sf::Event::MouseButtonPressed:
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                        this->handleMouseClick(event.mouseButton.x, event.mouseButton.y);
+                    }                    
+                    break;
 
                 // key up
                 case sf::Event::KeyReleased:
@@ -60,7 +81,7 @@ void View :: start()
                     {
                         std::cout << "Pressed Escape\n";                        
                     }
-                    std::cout << "Keypress\n";
+                    cout << "Keypress\n";
                     break;
 
                 // we don't process other types of events
