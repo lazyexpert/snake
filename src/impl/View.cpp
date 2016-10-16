@@ -105,7 +105,6 @@ void View :: start()
 {
     sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "Last, true, snake!");
     
-    // Event router
     while (window.isOpen())
     {
         sf::Event event;        
