@@ -30,6 +30,7 @@ class View
 public:
     View();
 
+    void draw(sf::RenderWindow* window);
     void start();
 };
 

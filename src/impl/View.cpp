@@ -3,6 +3,8 @@
 
 #include "../headers/View.hpp"
 #include "../headers/Model.hpp"
+#include "../headers/DataTypes.hpp"
+#include "../headers/Directions.hpp"
 
 using namespace std;
 View :: View() 
@@ -92,6 +94,33 @@ void View :: routeEvents(sf::Event* event, sf::Window* window)
   }
 }
 
+void View :: draw(sf::RenderWindow* window) {
+  for (int i = 0; i < this->model->size; i++) {
+    if (this->model->board[i] == EMPTYCELL) continue;
+
+    // define a rectangle
+    sf::RectangleShape rectangle;
+    rectangle.setSize(sf::Vector2f(this->cellWidth, this->cellHeight));
+
+    int offsetX = (i % this->cellsInWidth) * this->cellWidth;
+
+    int height = i / this->cellsInWidth;
+    int offsetY =  height * this->cellHeight;
+
+    rectangle.setPosition(sf::Vector2f(offsetX, offsetY));
+
+    if (this->model->board[i] == SNAKEBODY) {        
+      rectangle.setFillColor(sf::Color::Yellow);
+    } else if (this->model->board[i] == SNAKEHEAD) {
+      rectangle.setFillColor(sf::Color::Red);
+    } else if (this->model->board[i] == APPLE) {
+      rectangle.setFillColor(sf::Color::Green);
+    }
+    window->draw(rectangle);
+
+  }
+}
+
 void View :: start()
 {
   sf::VideoMode videoMode = sf::VideoMode(this->screenWidth, this->screenHeight);
@@ -105,7 +134,11 @@ void View :: start()
     // fetch events    
     this->routeEvents(&event, &window);
     window.setVerticalSyncEnabled(true);
-    window.clear();    
+    window.clear(sf::Color::Black);
+
+    this->draw(&window);
+
+    // finish draw
     window.display();
   }
 }

@@ -7,14 +7,12 @@ class Model
 {
   int width;
   int height;    
-  int size;
-  
   int snakehead;
   std::vector<int> snakebody;
 
-  int* board;
-
 public:
+  int size;
+  int* board;
   Model(int, int);
   
 private:

@@ -2,6 +2,7 @@
 
 #include "../headers/Model.hpp"
 #include "../headers/DataTypes.hpp"
+#include "../headers/Directions.hpp"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ Model :: Model (int width, int height)
 
   srand(time(0));
 
-  cout<< "Model instance created!\n";
+  cout<< "Model instance created\n";
 
   this->init();
 }
@@ -42,7 +43,7 @@ void Model :: init() {
     this->board[index] = APPLE;
   }
   
-  cout << "Model instance initialized!\n";
+  cout << "Model instance initialized\n";
 }
 
 int Model :: getRandomEmptyCell() {

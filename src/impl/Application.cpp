@@ -15,8 +15,8 @@ Application :: Application(int argc, char** argv)
     cout.setstate(ios_base::failbit);
   }
 
-  cout << "Application instance created.\n";
-  cout << (isDebug ? "Debug mode: true.\n" : "Debug mode: false.\n");  
+  cout << "Application instance created\n";
+  cout << (isDebug ? "Debug mode: true\n" : "Debug mode: false\n");  
 
   this->view = new View();        
 }
