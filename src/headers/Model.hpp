@@ -17,9 +17,21 @@ class Model
 public:
   Model(int, int);
   
+private:
+  /**
+   * Initialize board
+   * Add snake on the basic position 
+   * Add apples on random positions 
+   */
   void init();
 
-  std::vector<int> getEmptyCells();
+  /**
+   * Method finds all empty cells int the board
+   * Picks random one 
+   * Returns its index 
+   */ 
+  int getRandomEmptyCell();
+  
 };
 
 #endif
