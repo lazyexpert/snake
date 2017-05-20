@@ -10,13 +10,13 @@ View :: View()
   cout<< "View instance created\n";        
   
   this->cellsInWidth = 30;
-  this->cellsInHeight = 25;
+  this->cellsInHeight = 20;
 
   const int width = sf::VideoMode::getDesktopMode().width;
   const int height = sf::VideoMode::getDesktopMode().height;
   this->calculateDimensions(width, height);
 
-  // this->model = new Model(this->cellsInWidth, this->cellsInHeight);
+  this->model = new Model(this->cellsInWidth, this->cellsInHeight);
 }
 
 void View :: calculateDimensions(int width, int height) 
@@ -94,13 +94,16 @@ void View :: routeEvents(sf::Event* event, sf::Window* window)
 
 void View :: start()
 {
-  sf::RenderWindow window(sf::VideoMode(this->screenWidth, this->screenHeight), "Last, true, snake!");
-  
-  while (window.isOpen())
-  {
-    sf::Event event;        
-    this->routeEvents(&event, &window);
+  sf::VideoMode videoMode = sf::VideoMode(this->screenWidth, this->screenHeight);
+  sf::RenderWindow window(videoMode, "Lazy snake!");
 
+  // gameloop
+  while (window.isOpen())
+  {    
+    sf::Event event;
+
+    // fetch events    
+    this->routeEvents(&event, &window);
     window.setVerticalSyncEnabled(true);
     window.clear();    
     window.display();

@@ -10,11 +10,14 @@ using namespace std;
 
 Application :: Application(int argc, char** argv) 
 {   
-  bool res = Utils::parseArgs("debug", argc, argv);    
+  bool isDebug = Utils::parseArgs("debug", argc, argv);    
+  if (!isDebug) {
+    cout.setstate(ios_base::failbit);
+  }
 
   cout << "Application instance created.\n";
-  cout<< (res ? "Debug mode: true.\n" : "Debug mode: false.\n");
-      
+  cout << (isDebug ? "Debug mode: true.\n" : "Debug mode: false.\n");  
+
   this->view = new View();        
 }
 

@@ -5,7 +5,7 @@ CC=g++
 TARGET=build/snake
 
 # Compilation flags
-CFLAGS=-o
+CFLAGS= -std=c++11 -o
 
 # Flags for SFML
 LFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
