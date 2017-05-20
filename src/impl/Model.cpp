@@ -11,8 +11,8 @@ Model :: Model (int width, int height)
   this->width = width;
   this->height = height;
   this->size = width * height;
-  this->board = new int[this->size];
-  
+  this->board = new int [ this->size ];
+  this->direction = RIGHT;
   this->snakebody = {};
 
   srand(time(0));
@@ -55,3 +55,4 @@ int Model :: getRandomEmptyCell() {
 
   return rand() % emptyCells.size();
 }
+

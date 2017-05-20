@@ -8,6 +8,8 @@ class Model
   int width;
   int height;    
   int snakehead;
+  int direction;
+  
   std::vector<int> snakebody;
 
 public:

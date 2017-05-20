@@ -1,5 +1,5 @@
 # snake
-I create this application to practice in make, sfml graphics library and drown my nostalgic memories.
+LOL, this is how web developers create responsive desktop apps :)
 
 
 # Dependencies
