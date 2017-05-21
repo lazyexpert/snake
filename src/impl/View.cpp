@@ -9,13 +9,13 @@
 using namespace std;
 View :: View() 
 {    
-  cout<< "View instance created\n";        
+  cout << "View instance created\n";        
   
   this->cellsInWidth = 30;
   this->cellsInHeight = 20;
 
-  const int width = sf::VideoMode::getDesktopMode().width;
-  const int height = sf::VideoMode::getDesktopMode().height;
+  int width = sf::VideoMode::getDesktopMode().width;
+  int height = sf::VideoMode::getDesktopMode().height;
   this->calculateDimensions(width, height);
 
   this->model = new Model(this->cellsInWidth, this->cellsInHeight);
@@ -24,7 +24,7 @@ View :: View()
 void View :: calculateDimensions(int width, int height) 
 {
   this->screenWidth = width;
-  this->screenHeight = height-50;
+  this->screenHeight = height - 50;
 
   this->cellWidth = this->screenWidth / this->cellsInWidth;
   this->cellHeight = this->screenHeight / this->cellsInHeight;
@@ -33,27 +33,27 @@ void View :: calculateDimensions(int width, int height)
 }
 
 void View :: printDimensions() {
-  cout<<"Current dimensions:\n";
-  cout<<"ww: "<< this->screenWidth<<"; wh: "<< this->screenHeight;    
-  cout<<"; cw: "<< this->cellWidth<<"; ch: "<< this->cellHeight<<endl;
+  cout << "Current dimensions:\n";
+  cout << "ww: " << this->screenWidth << "; wh: " << this->screenHeight;
+  cout << "; cw: " << this->cellWidth << "; ch: " << this->cellHeight << endl;
 }
 
 void View :: handleMouseClick(int x, int y) 
 {
-  cout<<"Catch left mouse button"<<endl;
-  cout<<"x: "<<x<<endl;
-  cout<<"y: "<<y<<endl<<endl;
+  cout << "Catch left mouse button" << endl;
+  cout << "x: " << x << endl;
+  cout << "y: " << y << endl << endl;
 }
 
 void View :: handleKeypress(sf::Event* event) 
 {
-  cout<<"Handling keyboard keypress"<<endl;
+  cout << "Handling keyboard keypress"<<endl;
 }
 
 void View :: gentlyExit(sf::Window* window) 
 {
   window->close();
-  cout<<"The application is closed. Come back asap!\n";
+  cout << "The application is closed. Come back asap!\n";
 }
 
 void View :: routeEvents(sf::Event* event, sf::Window* window) 
@@ -143,7 +143,6 @@ void View :: start()
     } else {
       this->defeat();
     }
-    
 
     // finish draw
     window.display();

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "time.h"
 
 #include "../headers/Model.hpp"
 #include "../headers/DataTypes.hpp"
@@ -16,7 +17,7 @@ Model :: Model (int width, int height)
 
   srand(time(0));
 
-  cout<< "Model instance created\n";
+  cout << "Model instance created\n";
 
   this->init();
   this->setDirection(RIGHT);
@@ -27,11 +28,9 @@ void Model :: init() {
     if (i <= 5) {
       this->board[i] = SNAKEBODY;
       this->snakebody.push_back(i);
-    }
-    else if (i == 6) {
+    } else if (i == 6) {
       this->board[i] = SNAKEHEAD;      
-    }
-    else {
+    } else {
       this->board[i] = EMPTYCELL;
     }
   }

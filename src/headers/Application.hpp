@@ -3,15 +3,16 @@
 
 #include "View.hpp"
 
-
 /**
  * Main Application Class.
  * Basically - the compostion of all modules.
  */
-class Application 
+class Application
 {
     View* view;
-    
+
+    bool parseArgs(std::string, int, char**);
+
 public:
     /* Accepting command line arguments */    
     Application(int argc, char** argv);
