@@ -17,6 +17,21 @@ public:
   int* board;
   Model(int, int);
   
+  /**
+   * Set direction of the snake from outside world
+   */
+  void setDirection(int direction);
+  
+  /**
+   * Method checks if we can make next move
+   */
+  bool canMove();
+
+  /**
+   * Method to make snake move 
+   */
+  void makeMove();
+   
 private:
   /**
    * Initialize board
@@ -31,7 +46,6 @@ private:
    * Returns its index 
    */ 
   int getRandomEmptyCell();
-  
 };
 
 #endif

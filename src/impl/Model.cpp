@@ -12,7 +12,6 @@ Model :: Model (int width, int height)
   this->height = height;
   this->size = width * height;
   this->board = new int [ this->size ];
-  this->direction = RIGHT;
   this->snakebody = {};
 
   srand(time(0));
@@ -20,6 +19,7 @@ Model :: Model (int width, int height)
   cout<< "Model instance created\n";
 
   this->init();
+  this->setDirection(RIGHT);
 }
 
 void Model :: init() {  
@@ -56,3 +56,24 @@ int Model :: getRandomEmptyCell() {
   return rand() % emptyCells.size();
 }
 
+void Model :: setDirection(int direction) {
+  cout << "Snake direction changed\n";
+  this->direction = direction;
+}
+
+void Model :: makeMove() {
+  cout << "moving\n";
+}
+
+bool Model :: canMove() {
+  if (this->direction == UP ) {
+    return this->snakehead < this->width;
+  } else if (this->direction == RIGHT) {
+    return this->snakehead % this->width < this->width; 
+  } else if (this->direction == DOWN) {
+    int currentPosY = this->snakehead / this->width;
+    return currentPosY != this->height;
+  } else {
+    return this->snakehead % this->width != 0;
+  }
+}

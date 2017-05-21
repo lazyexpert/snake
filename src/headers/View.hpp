@@ -26,8 +26,9 @@ class View
     Model* model;
 
     void routeEvents(sf::Event*, sf::Window*);
+    void defeat();
 
-public:
+  public:
     View();
 
     void draw(sf::RenderWindow* window);

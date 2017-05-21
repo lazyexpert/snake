@@ -24,7 +24,7 @@ View :: View()
 void View :: calculateDimensions(int width, int height) 
 {
   this->screenWidth = width;
-  this->screenHeight = height;
+  this->screenHeight = height-50;
 
   this->cellWidth = this->screenWidth / this->cellsInWidth;
   this->cellHeight = this->screenHeight / this->cellsInHeight;
@@ -137,8 +137,19 @@ void View :: start()
     window.clear(sf::Color::Black);
 
     this->draw(&window);
+    
+    if (this->model->canMove()) {
+      this->model->makeMove();
+    } else {
+      this->defeat();
+    }
+    
 
     // finish draw
     window.display();
   }
+}
+
+void View :: defeat() {
+  cout << "DEFEAT!\n"; 
 }
