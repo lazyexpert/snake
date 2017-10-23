@@ -35,5 +35,6 @@ Developing and testing on Linux Mint 18 Cinnamon.
 
 Whenever you face compilation issues. Edit Makefile to add your compilation flags.
 
-# TODO:
-- Create 'controller' file and remove all logic from 'view' file
+# Roadmap:
+- Continue implementation of controller class moving logic from view to controller
+- Continue implementation of the game. Final point - gameloop done, start snake moving
