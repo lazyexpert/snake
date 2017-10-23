@@ -5,7 +5,7 @@ CC=g++
 TARGET=build/snake
 
 # Compilation flags
-CFLAGS= -std=c++11 -o
+CFLAGS= -std=c++11
 
 # Flags for SFML
 LFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
@@ -18,4 +18,13 @@ HEADERS=src/headers/*.hpp
 
 # Combine
 all: 
-	$(CC) $(SOURCE) $(HEADERS) $(CFLAGS) $(TARGET) $(LFLAGS)
+	$(CC) $(SOURCE) $(HEADERS) $(CFLAGS) -o $(TARGET) $(LFLAGS)
+
+compile:
+	$(CC) *.o $(CFLAGS) -o $(TARGET) $(LFLAGS)
+
+model:
+	$(CC) src/impl/Model.cpp $(HEADERS) $(CFLAGS) -c
+
+clean:
+	rm build/*.o

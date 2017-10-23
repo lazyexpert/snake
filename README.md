@@ -1,6 +1,9 @@
-# snake
-LOL, this is how web developers create responsive desktop apps :)
+# Snake
+Classical snake game implemented with C++ and SFML library.
 
+# Features
+All gaming dimensions are responsive to the window dimensions.
+The behavior is close to the responsive web pages behavior.
 
 # Dependencies
 [SFML](http://www.sfml-dev.org/) - find your install way. 

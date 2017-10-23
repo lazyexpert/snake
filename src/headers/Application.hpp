@@ -2,6 +2,8 @@
 #define Application_H
 
 #include "View.hpp"
+#include "Model.hpp"
+#include "Controller.hpp"
 
 /**
  * Main Application Class.
@@ -10,14 +12,15 @@
 class Application
 {
     View* view;
+    Model* model;
+    Controller* controller;
 
     bool parseArgs(std::string, int, char**);
 
 public:
     /* Accepting command line arguments */    
-    Application(int argc, char** argv);
+    Application(int, char**);
 
-    /* Obvious - starting app */
     void start();
 };
 
