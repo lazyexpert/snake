@@ -16,15 +16,26 @@ SOURCE=src/impl/*.cpp src/main.cpp
 # Header files
 HEADERS=src/headers/*.hpp
 
-# Combine
-all: 
-	$(CC) $(SOURCE) $(HEADERS) $(CFLAGS) -o $(TARGET) $(LFLAGS)
+model.o:
+	$(CC) src/impl/Model.cpp $(CFLAGS) -c
 
-compile:
-	$(CC) *.o $(CFLAGS) -o $(TARGET) $(LFLAGS)
+view.o:
+	$(CC) src/impl/View.cpp $(CFLAGS) -c
 
-model:
-	$(CC) src/impl/Model.cpp $(HEADERS) $(CFLAGS) -c
+controller.o:
+	$(CC) src/impl/Controller.cpp $(CFLAGS) -c
+
+application.o:
+	$(CC) src/impl/Application.cpp $(CFLAGS) -c
+
+main.o:
+	$(CC) src/main.cpp $(CFLAGS) -c
 
 clean:
-	rm build/*.o
+	rm *.o
+
+compile: model.o view.o controller.o application.o main.o
+
+# Combine
+all:
+	$(CC) *.o -o $(TARGET) $(LFLAGS) && make clean
