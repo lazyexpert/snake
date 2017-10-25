@@ -22,9 +22,9 @@ Application :: Application(int argc, char** argv)
   cout << "Application instance created\n";
   cout << (isDebug ? "Debug mode: true\n" : "Debug mode: false\n");  
 
-  this->view = new View();
-  this->model = new Model(CELLS_IN_WIDTH, CELLS_IN_HEIGHT);      
-  this->controller = new Controller(this->model, this->view);
+  View* view = new View();
+  Model* model = new Model(CELLS_IN_WIDTH, CELLS_IN_HEIGHT);      
+  this->controller = new Controller(model, view);
 }
 
 bool Application :: parseArgs(string target, int argc, char** argv)
@@ -38,6 +38,7 @@ bool Application :: parseArgs(string target, int argc, char** argv)
 void Application :: start() 
 {
   cout << "Starting application.\n";
-  this->view->start();
+
+  this->controller->start();
 }
 

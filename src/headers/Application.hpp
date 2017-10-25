@@ -1,8 +1,6 @@
 #ifndef Application_H
 #define Application_H
 
-#include "View.hpp"
-#include "Model.hpp"
 #include "Controller.hpp"
 
 /**
@@ -11,8 +9,6 @@
  */
 class Application
 {
-    View* view;
-    Model* model;
     Controller* controller;
 
     bool parseArgs(std::string, int, char**);

@@ -2,7 +2,7 @@
 #include "../headers/Model.hpp"
 #include "../headers/Controller.hpp"
 
-Controller:: Controller(Model* model, View* view) 
+Controller :: Controller(Model* model, View* view) 
 {
     this->view = view;
     this->model = model;
@@ -11,7 +11,10 @@ Controller:: Controller(Model* model, View* view)
     this->isDefeated = false;
 }
 
+void Controller :: start() {
+    this->view->start();
+} 
+
 // game loop
 // renderer call
 // event handlers call
-// 

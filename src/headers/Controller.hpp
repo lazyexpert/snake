@@ -15,6 +15,8 @@ class Controller
 
   public:
     Controller(Model*, View*);
+    
+    void start();
 };
 
 #endif
