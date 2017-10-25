@@ -22,7 +22,7 @@ Application :: Application(int argc, char** argv)
   cout << "Application instance created\n";
   cout << (isDebug ? "Debug mode: true\n" : "Debug mode: false\n");  
 
-  View* view = new View();
+  View* view = new View(CELLS_IN_WIDTH, CELLS_IN_HEIGHT);
   Model* model = new Model(CELLS_IN_WIDTH, CELLS_IN_HEIGHT);      
   this->controller = new Controller(model, view);
 }

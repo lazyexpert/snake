@@ -1,38 +1,34 @@
 #ifndef View_H
 #define View_H
 
-#include "Model.hpp"
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 class View 
 {
-    int screenWidth;
-    int screenHeight;
+  int screenWidth;
+  int screenHeight;
 
-    int cellWidth;
-    int cellHeight;
+  int cellWidth;
+  int cellHeight;
 
-    int cellsInWidth;
-    int cellsInHeight;
+  int cellsInWidth;
+  int cellsInHeight;
 
-    void calculateDimensions();
-    void calculateDimensions(int, int);
-    void printDimensions();
-    
+  void printDimensions();
+
+  sf::RenderWindow* window;
+
+  public:
+    View(int, int);
+
     void handleMouseClick(int ,int);
     void handleKeypress(sf::Event*);
     void gentlyExit(sf::Window*);
+    void calculateDimensions(int, int);
 
-    Model* model;
-
-    void routeEvents(sf::Event*, sf::Window*);
-    void defeat();
-
-  public:
-    View();
-
-    void draw(sf::RenderWindow* window);
-    void start();
+    void draw(sf::RenderWindow*, int, int*);
+    sf::RenderWindow* start();
 };
 
 #endif

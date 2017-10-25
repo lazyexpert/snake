@@ -7,18 +7,16 @@
 #include "../headers/Directions.hpp"
 
 using namespace std;
-View :: View() 
+View :: View(int width, int height) 
 {    
   cout << "View instance created\n";        
   
-  this->cellsInWidth = 30;
-  this->cellsInHeight = 20;
+  this->cellsInWidth = width;
+  this->cellsInHeight = height;
 
-  int width = sf::VideoMode::getDesktopMode().width;
-  int height = sf::VideoMode::getDesktopMode().height;
-  this->calculateDimensions(width, height);
-
-  this->model = new Model(this->cellsInWidth, this->cellsInHeight);
+  int windowWidth = sf::VideoMode::getDesktopMode().width;
+  int windowHeight = sf::VideoMode::getDesktopMode().height;
+  this->calculateDimensions(windowWidth, windowHeight);
 }
 
 void View :: calculateDimensions(int width, int height) 
@@ -52,51 +50,13 @@ void View :: handleKeypress(sf::Event* event)
 
 void View :: gentlyExit(sf::Window* window) 
 {
-  window->close();
+  this->window->close();
   cout << "The application is closed. Come back asap!\n";
 }
 
-void View :: routeEvents(sf::Event* event, sf::Window* window) 
-{
-  while (window->pollEvent(*event)) {
-    // check the type of the event...
-    switch (event->type)
-    {
-      // window closed
-      case sf::Event::Closed:
-        this->gentlyExit(window);
-        break;
-      
-      // catch window resize                
-      case sf::Event::Resized:
-        this->calculateDimensions(event->size.width, event->size.height);
-        break;
-      
-      // Mouse button click
-      case sf::Event::MouseButtonPressed:
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-          this->handleMouseClick(event->mouseButton.x, event->mouseButton.y);
-        }                    
-        break;
-
-      // key up
-      case sf::Event::KeyReleased:
-        if (event->key.code == sf::Keyboard::Escape) 
-          this->gentlyExit(window);                    
-        else 
-          this->handleKeypress(event);                                                
-        break;
-
-      // we don't process other types of events
-      default:
-        break;
-    }
-  }
-}
-
-void View :: draw(sf::RenderWindow* window) {
-  for (int i = 0; i < this->model->size; i++) {
-    if (this->model->board[i] == EMPTYCELL) continue;
+void View :: draw(sf::RenderWindow* window, int size, int* board) {
+  for (int i = 0; i < size; i++) {
+    if (board[i] == EMPTYCELL) continue;
 
     // define a rectangle
     sf::RectangleShape rectangle;
@@ -109,46 +69,22 @@ void View :: draw(sf::RenderWindow* window) {
 
     rectangle.setPosition(sf::Vector2f(offsetX, offsetY));
 
-    if (this->model->board[i] == SNAKEBODY) {        
+    if (board[i] == SNAKEBODY) {
       rectangle.setFillColor(sf::Color::Yellow);
-    } else if (this->model->board[i] == SNAKEHEAD) {
+    } else if (board[i] == SNAKEHEAD) {
       rectangle.setFillColor(sf::Color::Red);
-    } else if (this->model->board[i] == APPLE) {
+    } else if (board[i] == APPLE) {
       rectangle.setFillColor(sf::Color::Green);
     }
-    window->draw(rectangle);
 
+    this->window->draw(rectangle);
   }
 }
 
-void View :: start()
+sf::RenderWindow* View :: start()
 {
   sf::VideoMode videoMode = sf::VideoMode(this->screenWidth, this->screenHeight);
-  sf::RenderWindow window(videoMode, "Lazy snake!");
+  this->window = new sf::RenderWindow(videoMode, "Lazy snake!");
 
-  // gameloop
-  while (window.isOpen())
-  {    
-    sf::Event event;
-
-    // fetch events    
-    this->routeEvents(&event, &window);
-    window.setVerticalSyncEnabled(true);
-    window.clear(sf::Color::Black);
-
-    this->draw(&window);
-    
-    if (this->model->canMove()) {
-      this->model->makeMove();
-    } else {
-      this->defeat();
-    }
-
-    // finish draw
-    window.display();
-  }
-}
-
-void View :: defeat() {
-  cout << "DEFEAT!\n"; 
+  return window;
 }

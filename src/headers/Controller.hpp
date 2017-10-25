@@ -13,9 +13,14 @@ class Controller
   int score;
   bool isDefeated;
 
+  sf::RenderWindow* window;
+
+  void defeat();
+  void routeEvents(sf::Event*);
+
   public:
     Controller(Model*, View*);
-    
+
     void start();
 };
 
