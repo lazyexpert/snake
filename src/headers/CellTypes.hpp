@@ -1,7 +1,7 @@
-#ifndef DataTypes_H
-#define DataTypes_H
+#ifndef CellTypes_H
+#define CellTypes_H
 
-enum {
+enum CELLTYPES {
   EMPTYCELL,
   SNAKEHEAD,
   SNAKEBODY,

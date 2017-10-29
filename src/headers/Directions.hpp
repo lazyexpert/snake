@@ -1,7 +1,7 @@
 #ifndef Directions_H
 #define Directions_H
 
-enum {
+enum DIRECTIONS {
   UP,
   DOWN,
   LEFT,

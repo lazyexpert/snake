@@ -3,7 +3,7 @@
 
 #include "../headers/View.hpp"
 #include "../headers/Model.hpp"
-#include "../headers/DataTypes.hpp"
+#include "../headers/CellTypes.hpp"
 #include "../headers/Directions.hpp"
 
 using namespace std;
