@@ -38,4 +38,4 @@ compile: model.o view.o controller.o application.o main.o
 
 # Combine
 all:
-	$(CC) *.o -o $(TARGET) $(LFLAGS) && make clean
+	make compile && $(CC) *.o -o $(TARGET) $(LFLAGS) && make clean

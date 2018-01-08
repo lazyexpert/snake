@@ -31,6 +31,7 @@ public:
    * Method to make snake move 
    */
   void makeMove();
+  
    
 private:
   /**
@@ -46,6 +47,11 @@ private:
    * Returns its index 
    */ 
   int getRandomEmptyCell();
+
+  /**
+   * Helper method to get next cell index when making a move
+   */
+  int getNewCellIndex();
 };
 
 #endif

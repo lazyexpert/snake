@@ -23,13 +23,13 @@ Model :: Model (int width, int height)
   this->setDirection(RIGHT);
 }
 
-void Model :: init() {  
+void Model :: init() {
   for (int i = 0; i < this->size; i++) {
     if (i <= 5) {
       this->board[i] = SNAKEBODY;
       this->snakebody.push_back(i);
     } else if (i == 6) {
-      this->board[i] = SNAKEHEAD;      
+      this->board[i] = SNAKEHEAD;
     } else {
       this->board[i] = EMPTYCELL;
     }
@@ -61,7 +61,9 @@ void Model :: setDirection(int direction) {
 }
 
 void Model :: makeMove() {
-  cout << "moving\n";
+  int index = this->getNewCellIndex();
+
+  cout << index;
 }
 
 bool Model :: canMove() {
@@ -74,5 +76,17 @@ bool Model :: canMove() {
     return currentPosY != this->height;
   } else {
     return this->snakehead % this->width != 0;
+  }
+}
+
+int Model :: getNewCellIndex() {
+  if (this->direction == UP ) {
+    return this->snakehead - this->width;
+  } else if (this->direction == RIGHT) {
+    return this->snakehead + 1; 
+  } else if (this->direction == DOWN) {
+    return this->snakehead + this->width;
+  } else {
+    return this->snakehead - 1;
   }
 }
