@@ -62,8 +62,12 @@ void Model :: setDirection(int direction) {
 
 void Model :: makeMove() {
   int index = this->getNewCellIndex();
-
-  cout << index;
+  this->board[index] = SNAKEHEAD;
+  this->board[this->snakehead] = SNAKEBODY;
+  this->snakebody.push_back(this->snakehead);
+  this->board[this->snakebody[0]] = EMPTYCELL;
+  this->snakebody.erase(this->snakebody.begin());
+  this->snakehead = index;
 }
 
 bool Model :: canMove() {
